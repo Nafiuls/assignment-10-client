@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import UseAuth from "../utils/CustomHooks/UseAuth";
 
 const Navbar = () => {
@@ -86,9 +86,12 @@ const Navbar = () => {
             </button>
           </div>
         ) : (
-          <button className="bg-[#ffd447] text-[#1A1A1A] px-8 rounded-sm cursor-pointer hover:bg-[#E6BD3F] py-2 font-medium">
-            Login
-          </button>
+          <Link to={"/login"}>
+            {" "}
+            <button className="bg-[#ffd447] text-[#1A1A1A] px-8 rounded-sm cursor-pointer hover:bg-[#E6BD3F] py-2 font-medium">
+              Login
+            </button>
+          </Link>
         )}
       </div>
     </div>
