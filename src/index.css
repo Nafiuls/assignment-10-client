@@ -7,3 +7,12 @@ body {
 .active {
   color: #ffd447;
 }
+
+.btc {
+  background-color: #ffd447;
+  color: #1a1a1a;
+}
+
+.btc:hover {
+  background-color: #e6bd3f;
+}
