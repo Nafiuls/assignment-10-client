@@ -1,7 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import UseAuth from "../utils/CustomHooks/UseAuth";
 
 const Navbar = () => {
+  const { user, handleLogout } = UseAuth();
   const routes = [
     { path: "/", name: "home" },
     { path: "/reviews", name: "reviews" },
@@ -65,9 +67,29 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <button className="bg-[#ffd447] text-[#1A1A1A] px-8 rounded-sm cursor-pointer hover:bg-[#E6BD3F] py-2 font-medium">
-          Login
-        </button>
+        {user ? (
+          <div className="flex items-center gap-3">
+            <div className="avatar">
+              <div
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content={user?.displayName}
+                className="w-12 rounded-full"
+              >
+                <img src={user?.photoURL} />
+              </div>
+            </div>
+            <button
+              onClick={() => handleLogout()}
+              className="btc py-2 cursor-pointer px-5 rounded-sm"
+            >
+              Log out
+            </button>
+          </div>
+        ) : (
+          <button className="bg-[#ffd447] text-[#1A1A1A] px-8 rounded-sm cursor-pointer hover:bg-[#E6BD3F] py-2 font-medium">
+            Login
+          </button>
+        )}
       </div>
     </div>
   );

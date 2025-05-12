@@ -1,7 +1,12 @@
 import React, { useState } from "react";
+import UseAuth from "../../utils/CustomHooks/UseAuth";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [error, setError] = useState("");
+  const { handleRegister, manageProfile } = UseAuth();
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -19,7 +24,16 @@ const Register = () => {
       return setError("Password Must Have One Lowercase Letter");
     }
     setError("");
-    console.log(name, email, image, password);
+    handleRegister(email, password)
+      .then(() => {
+        manageProfile(name, image);
+        toast.success("Register Successfully!");
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err.message);
+        toast.error("Something Went Wrong!");
+      });
   };
   return (
     <div className="flex h-screen flex-col items-center justify-center">
@@ -68,6 +82,12 @@ const Register = () => {
         <button className=" btc font-medium textarea-lg py-2 rounded-md cursor-pointer">
           Register
         </button>
+        <p className="text-center textarea-md">
+          Have an account?{" "}
+          <Link to={"/login"} className="txt underline hover:text-[#e6bd3f] ">
+            Login here
+          </Link>
+        </p>
       </form>
     </div>
   );
