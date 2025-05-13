@@ -8,6 +8,7 @@ import Watchlist from "../pages/Watchlist/Watchlist";
 import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
 import PrivateRoute from "../utils/PrivateRoute/PrivateRoute";
+import Details from "../pages/Details/Details";
 
 const router = createBrowserRouter([
   {
@@ -17,10 +18,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        loader: () => fetch("http://localhost:5000/highest"),
       },
       {
         path: "/reviews",
         element: <AllReviews />,
+        loader: () => fetch("http://localhost:5000/reviews"),
       },
       {
         path: "/addReviews",
@@ -37,6 +40,12 @@ const router = createBrowserRouter([
       {
         path: "/watchlist",
         element: <Watchlist />,
+      },
+      {
+        path: "/details/:id",
+        element: <Details />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/reviews/${params.id}`),
       },
       {
         path: "/register",

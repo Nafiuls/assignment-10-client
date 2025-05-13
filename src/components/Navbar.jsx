@@ -49,7 +49,7 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">PlayVibe</a>
+        <a className="btn btn-ghost text-3xl font-extrabold">PlayVibe</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu flex items-center flex-row gap-5 font-medium capitalize">

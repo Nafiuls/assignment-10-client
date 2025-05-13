@@ -10,7 +10,7 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "../../Firebase/Firebase.init";
-const AuthProvider = ({ route }) => {
+const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   //   google Provider
@@ -81,7 +81,7 @@ const AuthProvider = ({ route }) => {
     manageProfile,
   };
 
-  return <authContext.Provider value={data}>{route}</authContext.Provider>;
+  return <authContext.Provider value={data}>{children}</authContext.Provider>;
 };
 
 export default AuthProvider;
