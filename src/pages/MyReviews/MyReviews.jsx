@@ -21,7 +21,7 @@ const MyReviews = () => {
         }
       />
       <div>
-        <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 lg:w-xl">
+        <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 lg:w-3xl">
           <table className="table">
             {/* head */}
             <thead>
@@ -34,7 +34,13 @@ const MyReviews = () => {
             </thead>
             <tbody>
               {gameData?.map((game, index) => (
-                <TableRow key={game._id} index={index} game={game} />
+                <TableRow
+                  gameData={gameData}
+                  setGameData={setGameData}
+                  key={game._id}
+                  index={index}
+                  game={game}
+                />
               ))}
             </tbody>
           </table>
