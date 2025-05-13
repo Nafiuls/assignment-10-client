@@ -26,7 +26,7 @@ const TableRow = ({ game, index, setGameData, gameData }) => {
       <td>{title}</td>
       <td>{userName}</td>
       <td className="flex items-center gap-5">
-        <Link className="btc p-2 rounded-md">
+        <Link to={`/edit/${_id}`} className="btc p-2 rounded-md">
           <TfiWrite data-tooltip-id="my-tooltip" data-tooltip-content="Edit" />
         </Link>
         <Link onClick={() => handleDelete(_id)} className="btc p-2 rounded-md">
