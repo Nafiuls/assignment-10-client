@@ -3,7 +3,7 @@ import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Card = ({ game }) => {
-  const { _id, image, review, gameRating, title } = game;
+  const { _id, image, review, gameRating, title, publishingYear } = game;
   return (
     <div className="bg-[#1A1E29] text-white rounded-2xl shadow-lg p-4 max-w-sm mx-auto">
       {/* Game Image */}
@@ -25,6 +25,9 @@ const Card = ({ game }) => {
         <span className="flex items-center gap-1">
           <FaStar color="orange" size={18} /> {gameRating}
         </span>
+      </p>
+      <p className=" gap-2 font-medium flex items-center">
+        Publishing Year: {publishingYear}
       </p>
       {/* Explore Button */}
       <Link to={`/details/${_id}`}>

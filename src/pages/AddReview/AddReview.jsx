@@ -62,6 +62,7 @@ const AddReview = () => {
             type="text"
             name="image"
             placeholder="Photo URL"
+            required
           />
         </div>
         <div className="w-full">
@@ -71,11 +72,13 @@ const AddReview = () => {
             type="text"
             name="title"
             placeholder="Game Title"
+            required
           />
         </div>
         <div className="w-full">
           <p className="mb-2 font-semibold">Review Description:</p>
           <textarea
+            required
             placeholder="Review Description"
             name="review"
             className="w-full px-4 py-2 rounded-md border border-gray-700 bg-[#262B39] text-white placeholder-gray-400 focus:outline-none  focus:border-transparent min-h-[120px] resize-none"
@@ -86,6 +89,7 @@ const AddReview = () => {
           <div className="rating">
             {[1, 2, 3, 4, 5].map((num) => (
               <input
+                required
                 key={num}
                 type="radio"
                 name="rating"
@@ -100,6 +104,7 @@ const AddReview = () => {
         <div className="w-full">
           <p className="mb-2 font-semibold">Publishing Year:</p>
           <input
+            required
             className="outline-none w-full py-2 px-3 rounded-md bg-[#262B39] text-white"
             type="number"
             name="year"
@@ -112,6 +117,7 @@ const AddReview = () => {
         <div className="w-full">
           <p className="mb-2 font-semibold">Genre:</p>
           <select
+            required
             name="genre"
             className="outline-none w-full py-2 px-3 rounded-md bg-[#262B39] text-white"
             defaultValue=""
