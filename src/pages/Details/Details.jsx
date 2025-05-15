@@ -36,7 +36,7 @@ const Details = () => {
       userName: user?.displayName,
       userEmail: user?.email,
     };
-    fetch("http://localhost:5000/add-watchlist", {
+    fetch("https://assignment-10-server-omega-mauve.vercel.app/add-watchlist", {
       method: "POST",
       headers: {
         "content-type": "application/json",

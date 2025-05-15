@@ -2,14 +2,18 @@ import React, { useEffect, useState } from "react";
 import Heading from "../../utils/Heading";
 import { useLoaderData } from "react-router-dom";
 import Card from "../../components/Card";
+import Spinner from "../../components/Spinner";
 
 const AllReviews = () => {
   const data = useLoaderData();
   const [sortedData, setSortedData] = useState([]);
   const [sortOption, setSortOption] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("");
+  const [loading, setLoading] = useState(true);
   const genres = [...new Set(data.map((game) => game.genre))];
   useEffect(() => {
+    if (!data || data.length === 0) return;
+    setLoading(true);
     let sorted = [...data];
     if (selectedGenre) {
       sorted = sorted.filter((game) => game.genre === selectedGenre);
@@ -24,10 +28,12 @@ const AllReviews = () => {
       sorted.sort((a, b) => b.gameRating - a.gameRating);
     }
     setSortedData(sorted);
+    setLoading(false);
   }, [sortOption, data, selectedGenre]);
 
+  if (loading) return <Spinner />;
   return (
-    <div className="flex flex-col justify-center">
+    <div className="flex flex-col max-w-6xl mx-auto justify-center">
       <Heading
         text={
           "Explore a growing collection of honest game reviews from real players. From blockbusters to hidden gems, discover what others think before you hit play."

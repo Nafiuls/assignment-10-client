@@ -7,9 +7,12 @@ import toast from "react-hot-toast";
 const TableRow = ({ game, index, setGameData, gameData }) => {
   const { _id, title, userName } = game;
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/review-delete/${id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://assignment-10-server-omega-mauve.vercel.app/review-delete/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount) {

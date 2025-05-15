@@ -28,7 +28,7 @@ const AddReview = () => {
       publishingYear,
       genre,
     };
-    fetch("http://localhost:5000/add-review", {
+    fetch("https://assignment-10-server-omega-mauve.vercel.app/add-review", {
       method: "POST",
       headers: {
         "content-type": "application/json",

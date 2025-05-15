@@ -10,21 +10,25 @@ import Login from "../pages/Login/Login";
 import PrivateRoute from "../utils/PrivateRoute/PrivateRoute";
 import Details from "../pages/Details/Details";
 import Edit from "../pages/Edit/Edit";
+import NotFound from "../pages/NotFound/NotFound";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <NotFound />,
     children: [
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("http://localhost:5000/highest"),
+        loader: () =>
+          fetch("https://assignment-10-server-omega-mauve.vercel.app/highest"),
       },
       {
         path: "/reviews",
         element: <AllReviews />,
-        loader: () => fetch("http://localhost:5000/reviews"),
+        loader: () =>
+          fetch("https://assignment-10-server-omega-mauve.vercel.app/reviews"),
       },
       {
         path: "/addReviews",
@@ -36,23 +40,35 @@ const router = createBrowserRouter([
       },
       {
         path: "/myReviews",
-        element: <MyReviews />,
+        element: (
+          <PrivateRoute>
+            <MyReviews />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/watchlist",
-        element: <Watchlist />,
+        element: (
+          <PrivateRoute>
+            <Watchlist />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/details/:id",
         element: <Details />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/reviews/${params.id}`),
+          fetch(
+            `https://assignment-10-server-omega-mauve.vercel.app/reviews/${params.id}`
+          ),
       },
       {
         path: "/edit/:id",
         element: <Edit />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/reviews/${params.id}`),
+          fetch(
+            `https://assignment-10-server-omega-mauve.vercel.app/reviews/${params.id}`
+          ),
       },
       {
         path: "/register",

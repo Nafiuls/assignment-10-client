@@ -2,18 +2,27 @@ import React, { useEffect, useState } from "react";
 import Heading from "../../utils/Heading";
 import UseAuth from "../../utils/CustomHooks/UseAuth";
 import TableRow from "../../components/TableRow";
+import Spinner from "../../components/Spinner";
 
 const MyReviews = () => {
   const { user } = UseAuth();
   const [gameData, setGameData] = useState([]);
+  const [laoding, setLoading] = useState(true);
   useEffect(() => {
-    fetch(`http://localhost:5000/review/${user?.email}`)
+    fetch(
+      `https://assignment-10-server-omega-mauve.vercel.app/review/${user?.email}`
+    )
       .then((res) => res.json())
-      .then((data) => setGameData(data))
+      .then((data) => {
+        setGameData(data);
+        setLoading(false);
+      })
       .catch((error) => console.log(error));
   }, [user]);
+
+  if (laoding) return <Spinner />;
   return (
-    <div className=" p-4 h-screen flex flex-col items-center mt-10">
+    <div className=" p-4 my-5 flex flex-col items-center mt-10">
       <Heading
         title={"My Game Reviews"}
         text={

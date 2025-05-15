@@ -4,7 +4,7 @@ import Card from "../../components/Card";
 
 const Highest = ({ data }) => {
   return (
-    <div>
+    <div className="max-w-6xl mx-auto">
       <Heading
         title={"Highest Rated Reviews"}
         text={

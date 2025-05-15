@@ -41,7 +41,7 @@ const Edit = () => {
       publishingYear,
       genre,
     };
-    fetch(`http://localhost:5000/review/${_id}`, {
+    fetch(`https://assignment-10-server-omega-mauve.vercel.app/review/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
