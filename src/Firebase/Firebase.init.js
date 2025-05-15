@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyByoGOIEQ497321YPW32SNvBdnbZhS1Ugs",
-  authDomain: "playvibe-3e88f.firebaseapp.com",
-  projectId: "playvibe-3e88f",
-  storageBucket: "playvibe-3e88f.firebasestorage.app",
-  messagingSenderId: "1097317625780",
-  appId: "1:1097317625780:web:0709552acc5ee2de94cce1",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
